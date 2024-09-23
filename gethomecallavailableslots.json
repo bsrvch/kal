@@ -1,0 +1,104 @@
+Запрос
+Пример запроса: 
+{
+   "resourceType":"Parameters",
+   "parameter":[
+      {
+         "name":"organizationId",
+         "valueString":"154" //Идентификатор ЛПУ из справочника «ЛПУ» Интеграционной платформы
+      },
+      {
+         "name":"scheduleId",
+         "valueString":"771f0cdc-2e7f-4e3a-99b1-da68d2b196c8" //Идентификатор расписания мед ресурса
+      },
+      {
+         "name":"startDateTimeRange",
+         "valueString":"2021-05-05T00:00:00+05:00" //Дата и время начала периода предоставления информации о наличии/отсутствии свободных слотов
+      },
+      {
+         "name":"endDateTimeRange",
+         "valueString":"2021-05-19T23:59:59+05:00" //Дата и время окончания периода предоставления информации о наличии/отсутствии свободных слотов
+      }
+   ]
+}
+Ответ
+Пример ответа метода (без ошибок):
+{ 
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [{
+            "fullUrl": "Slot/e6527afa-7d45-4df3-b0cc-b98a6b6751c4",
+            "resource": {
+                "resourceType": "Slot",
+                "id": "e6527afa-7d45-4df3-b0cc-b98a6b6751c4", //ID ресурса Slot
+                "identifier": [{
+                        "system": "urn:oid:1.2.643.5.1.13.2.7.100.5",
+                        "value": "661f0cdc-2e7f-4e3a-99b1-da68d2b196c6" //Идентификатор талона для записи в МИС МО
+                    }
+                ],
+                "schedule": {
+                    "reference": "Schedule/d9feab49-b09b-42e4-8506-109896054311" //ссылка на ресурс Schedule (расписание)
+                },
+                "status": "free",
+                "start": "2024-05-15T09:00:00Z", //Дата и время начала приема
+                "end": "2024-05-15T13:30:00Z", //Дата и время окончания приема
+                "comment": "7" //Номер талона в очереди
+            }
+        }, {
+            "fullUrl": "Slot/393bcadc-0111-49bd-affc-3035de6747c8",
+            "resource": {
+                "resourceType": "Slot",
+                "id": "393bcadc-0111-49bd-affc-3035de6747c8", //ID ресурса Slot
+                "identifier": [{
+                        "system": "urn:oid:1.2.643.5.1.13.2.7.100.5",
+                        "value": "321397ff-6bfd-419b-a4f8-d145766344b8" //Идентификатор талона для записи в МИС МО
+                    }
+                ],
+                "schedule": {
+                    "reference": "Schedule/d9feab49-b09b-42e4-8506-109896054311" //ссылка на ресурс Schedule (расписание)
+                },
+                "status": "free",
+                "start": "2024-05-15T13:30:00Z", //Дата и время начала приема
+                "end": "2024-05-15T22:00:00Z", //Дата и время окончания приема
+                "comment": "8" //Номер талона в очереди
+            }
+        }, {
+            "fullUrl": "Slot/b2cce0fd-4f51-4fa1-85d8-f03fc284805e",
+            "resource": {
+                "resourceType": "Slot",
+                "id": "b2cce0fd-4f51-4fa1-85d8-f03fc284805e", //ID ресурса Slot
+                "identifier": [{
+                        "system": "urn:oid:1.2.643.5.1.13.2.7.100.5",
+                        "value": "29fb0c53-7c34-47e0-b953-6f4ee82915f4" //Идентификатор талона для записи в МИС МО
+                    }
+                ],
+                "schedule": {
+                    "reference": "Schedule/d9feab49-b09b-42e4-8506-109896054311" //ссылка на ресурс Schedule (расписание)
+                },
+                "status": "free",
+                "start": "2024-06-15T09:00:00Z", //Дата и время начала приема
+                "end": "2024-06-15T13:00:00Z", //Дата и время окончания приема
+                "comment": "9" //Номер талона в очереди
+            }
+        }
+    ]
+}
+Пример ответа метода (с ошибкой):
+{
+   "resourceType":"OperationOutcome",
+   "issue":[
+      {
+         "severity":"error",
+         "code":"invalid",
+         "details":{
+            "coding":[
+               {
+                  "system":"urn:oid:1.2.643.2.69.1.1.1.166",
+                  "code":"15",
+                  "display":"Внутренняя ошибка сервиса"
+               }
+            ]
+         }
+      }
+   ]
+}
